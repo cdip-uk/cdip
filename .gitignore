@@ -1,2 +1,4 @@
 *.org
 node_modules
+.secret
+.key
