@@ -9,6 +9,7 @@ services:
       - ../../src/contracts:/src/contracts
       - ../../deployments/truffle:/src/
       - ./scripts:/scripts
+      - node-modules:/src/node_modules
       - dev-build:/build
       - truffle-cache:/root/.config/truffle
     tty: true
@@ -18,3 +19,4 @@ services:
 volumes:
   dev-build:
   truffle-cache:
+  node-modules:
