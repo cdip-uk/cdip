@@ -2,7 +2,7 @@ version: '3'
 
 services:
   node:
-    image: trufflesuite/ganache-cli:latest
+    image: trufflesuite/ganache-cli:v6.12.2
     ports:
       - ${GANACHE_PORT}:8545
     command: -i ${GANACHE_NETWORK}
