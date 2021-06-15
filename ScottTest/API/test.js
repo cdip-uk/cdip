@@ -47,9 +47,7 @@ async function recordConsent()
 }
 
 async function getConsent( id )
-{
-
-    
+{    
     ConsentContract.methods.getConsent( id )
         .call( ( err,res) => {
 
@@ -64,23 +62,18 @@ async function getConsent( id )
 
 }
 
-async function getAccounts()
+async function init()
 {
     accounts = await web3.eth.getAccounts();
 
     console.log("Account 0 => " + accounts[0]);
 
-    await getLastId();
-
     await recordConsent();
 
-    await getLastId();
-
     await getConsent(1);
-
 }
 
-getAccounts();
+init();
  
 
 // 

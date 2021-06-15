@@ -1,18 +1,19 @@
+const dotenv = require('dotenv')
+dotenv.config();
+
 const Web3 = require("web3");
 
-const web3 = new Web3("http://localhost:9945");
+const web3 = new Web3( process.env.ETHEREUM_URL );
+web3.eth.handleRevert = true;
 
 const fs = require('fs');
 const consentJSON = JSON.parse( fs.readFileSync('../truffle/build/contracts/Consent.json', 'utf8') );
 
-const networkId = 1357;
-
 const contract_abi = consentJSON.abi;
-const contract_address = consentJSON.networks[ networkId ].address;
+const contract_address = consentJSON.networks[ process.env.NETWORK_ID ].address;
 
 const ConsentContract = new web3.eth.Contract(contract_abi, contract_address);
 
-web3.eth.handleRevert = true;
 
 const getAccounts = ( request, response ) => 
 {
