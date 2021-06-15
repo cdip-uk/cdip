@@ -1,6 +1,6 @@
 # Civic Data Identity Partnership
 
-This repositroy will contain a development environment and an
+This repository will contain a development environment and an
 implementation of some initial ideas around a DLT-based system for
 co-ordinating consent for health data reuse.
 

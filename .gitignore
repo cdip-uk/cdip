@@ -2,3 +2,8 @@
 node_modules
 .secret
 .key
+deployments/truffle/build/
+
+ScottTest/truffle/build/contracts/
+
+src/API/build/

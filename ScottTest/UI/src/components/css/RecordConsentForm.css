@@ -1,0 +1,16 @@
+.recordConsentForm form
+{
+  	display: grid;
+    grid-template-columns: 10vw 25vw;
+    row-gap: 1vh;
+}
+
+.recordConsentForm label
+{
+	grid-column: 1/2;
+}
+
+.recordConsentForm input, button
+{
+	grid-column: 2/3;
+}
