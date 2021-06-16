@@ -32,11 +32,17 @@ app.get( "/consent/total", blockchain.getLastId );
 // app.get( "/consent/total", blockchain.getAllConsents );
 
 /* ------------------------------------------------------------------- */
+app.get( "/consent/", blockchain.getAllConsents );
+
+/* ------------------------------------------------------------------- */
 app.get( "/consent/:id", blockchain.getConsent );
 
 /* ------------------------------------------------------------------- */
 app.post( "/consent/", blockchain.recordConsent );
 
+/* ------------------------------------------------------------------- */
+app.post( "/consenttype/", blockchain.addConsentType );
 
-
+/* ------------------------------------------------------------------- */
+app.get( "/consenttype/", blockchain.getAllConsentTypes );
 

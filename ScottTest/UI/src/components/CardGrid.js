@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { API_URL } from '../Consts.js';
 
 import { AccountListCard } from './cards/AccountListCard';
 import { ConsentCard } from './cards/ConsentCard';
 import { MetaMaskCard } from './cards/MetaMaskCard';
-import { NumConsentsCard } from './cards/NumConsentsCard';
+import { ConsentTypesCard } from './cards/ConsentTypesCard';
 import { RecordConsentCard } from './cards/RecordConsentCard';
 
 export const CardGrid = (props) => {
@@ -22,12 +22,16 @@ export const CardGrid = (props) => {
       });
   };
 
+  useEffect( () => {
+    getNumConsents();
+  }, [])
+
   return (
     <div className='cardGrid'>
 
       <AccountListCard />
 
-      <NumConsentsCard numConsents={numConsents} setNumConsents={setNumConsents} getNumConsents={getNumConsents}/>
+      <ConsentTypesCard numConsents={numConsents} setNumConsents={setNumConsents} getNumConsents={getNumConsents}/> 
 
       <ConsentCard id={numConsents}/>
 

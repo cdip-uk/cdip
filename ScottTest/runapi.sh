@@ -1,6 +1,6 @@
 #!/bin/bash
 
 cd API
-node index.js & node test.js && fg
+node index.js
 cd ..
 

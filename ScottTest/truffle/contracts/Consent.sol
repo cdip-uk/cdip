@@ -6,11 +6,9 @@ import "./SimpleIdentityAuthority.sol";
 import "openzeppelin-solidity/contracts/utils/math/SafeMath.sol";
 import "openzeppelin-solidity/contracts/utils/Counters.sol";
 
-
 contract Consent {
     using SafeMath for uint256;
     using Counters for Counters.Counter;
-
 
     event ConsentRecorded(address indexed _identity,
                           address indexed _signer,
@@ -67,7 +65,6 @@ contract Consent {
 
         return (identity, signer, consentType, time);
     }
-
 
     modifier validSigner(address _identity) 
     {
