@@ -25,6 +25,9 @@ def make_parser():
     dev_parser.add_argument("-b", "--build", action="store_true",
                             help="rebuild docker containers")
 
+    subparser.add_parser("down",
+                         help="tear down dev images")
+
     return(parser)
 
 
@@ -42,14 +45,15 @@ if __name__ == '__main__':
         p = make_parser()
         args = p.parse_args()
 
-        if args.command == "dev":
-            run = ["docker-compose",
+        compose = ["docker-compose",
                    "-p", "cdip", "--env-file", "../deployments/dev/dev.env",
                    "-f", "../deployments/dev/docker-compose.ganache.yml",
                    "-f", "../deployments/dev/docker-compose.truffle.yml",
                    "-f", "../deployments/dev/docker-compose.server.yml",
-                   "-f", "../deployments/web/docker-compose.server.yml",
-                   "up", "-d"]
+                   "-f", "../deployments/web/docker-compose.server.yml"]
+
+        if args.command == "dev":
+            run = compose + ["up", "-d"]
             if args.build:
                 run += ["--build"]
             subprocess.call(run)
@@ -60,6 +64,9 @@ if __name__ == '__main__':
             elif args.shell:
                 subprocess.call(["docker", "exec", "-it", "cdip_truffle-box_1", "/bin/sh"])
                 print("done")
+        elif args.command == "down":
+            down = compose + ["down"]
+            subprocess.call(down)
         else:
             raise Exception()
     except Exception:
